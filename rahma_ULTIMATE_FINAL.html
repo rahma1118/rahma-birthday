@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 19th Birthday Rahma 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF9F5 0%, #FFE6F0 100%);
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #B76E79;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #8B5A8E;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 800px;
+            text-align: center;
+            margin: 20px auto;
+            color: #4A4A4A;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #B76E79 0%, #8B5A8E 100%);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(183, 110, 121, 0.4);
+            font-weight: 600;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.6);
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFB6C1;
+            transform: rotate(45deg);
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFB6C1;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            left: -10px;
+        }
+
+        .heart:after {
+            top: -10px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-30px) rotate(45deg);
+                opacity: 0.8;
+            }
+        }
+
+        .countdown {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .countdown-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #B76E79;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 1em;
+            color: #8B5A8E;
+            margin-top: 10px;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .question {
+            font-size: 1.5em;
+            color: #2C2C2C;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .option {
+            background: #FFF9F5;
+            padding: 15px 25px;
+            margin: 15px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: #FFE6F0;
+            border-color: #B76E79;
+            transform: translateX(10px);
+        }
+
+        .option.selected {
+            background: #B76E79;
+            color: white;
+            border-color: #8B5A8E;
+        }
+
+        .gift-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .gift {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
+        }
+
+        .gift-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .gift-name {
+            font-size: 1.5em;
+            color: #8B5A8E;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .gift-desc {
+            color: #666;
+            font-size: 1em;
+        }
+
+        .gift-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .gift-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        .gift-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #B76E79;
+        }
+
+        .gift-modal-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .love-letters {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .letter {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .letter-title {
+            font-size: 2em;
+            color: #B76E79;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .letter-content {
+            font-size: 1.2em;
+            line-height: 2;
+            color: #2C2C2C;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        .message-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .message-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            color: #8B5A8E;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #4A4A4A;
+        }
+
+        .wishes {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .wish-item {
+            background: white;
+            padding: 25px 40px;
+            margin: 20px 0;
+            border-radius: 15px;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cake-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cake-svg {
+            max-width: 500px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .balloons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .balloon {
+            width: 80px;
+            height: 100px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .balloon:hover {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        .balloon.pink {
+            background: #FFB6C1;
+        }
+
+        .balloon.purple {
+            background: #DDA0DD;
+        }
+
+        .balloon.gold {
+            background: #FFD700;
+        }
+
+        .photo-gallery {
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(183, 110, 121, 0.3);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #8B5A8E;
+            font-style: italic;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background: linear-gradient(90deg, #B76E79, #8B5A8E);
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .letter {
+                padding: 30px 20px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Gift Modals -->
+    <div class="gift-modal" id="cakeModal">
+        <div class="gift-modal-content">
+            <span class="gift-modal-close" onclick="closeGiftModal('cakeModal')">&times;</span>
+            <h2 style="color: #B76E79; text-align: center;">🎂 Your Chocolate Birthday Cake</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-top: 20px;">A delicious chocolate cake made with all my love for you! Your favorite! Happy Birthday Rahma! 💕</p>
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="gift-modal-img">
+                <rect fill="#654321" x="50" y="200" width="300" height="150" rx="10"/>
+                <rect fill="#4A3319" x="50" y="160" width="300" height="40"/>
+                <rect fill="#654321" x="80" y="110" width="240" height="50" rx="10"/>
+                <circle fill="#FF0000" cx="140" cy="95" r="8"/>
+                <circle fill="#FF0000" cx="200" cy="95" r="8"/>
+                <circle fill="#FF0000" cx="260" cy="95" r="8"/>
+                <rect fill="#FFD700" x="135" y="50" width="10" height="60"/>
+                <rect fill="#FFD700" x="195" y="50" width="10" height="60"/>
+                <rect fill="#FFD700" x="255" y="50" width="10" height="60"/>
+                <ellipse fill="#FFA500" cx="140" cy="45" rx="6" ry="10"/>
+                <ellipse fill="#FFA500" cx="200" cy="45" rx="6" ry="10"/>
+                <ellipse fill="#FFA500" cx="260" cy="45" rx="6" ry="10"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="gift-modal" id="flowersModal">
+        <div class="gift-modal-content">
+            <span class="gift-modal-close" onclick="closeGiftModal('flowersModal')">&times;</span>
+            <h2 style="color: #B76E79; text-align: center;">💐 Beautiful Flower Bouquet</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-top: 20px;">A beautiful bouquet of flowers, as beautiful as you are, my love! These roses are for you 🌹</p>
+            <div style="text-align: center; font-size: 4em; margin: 30px 0;">🌹🌹🌹🌹🌹</div>
+        </div>
+    </div>
+
+    <!-- Section 1: Landing -->
+    <div class="section" id="s1" style="display: flex;">
+        <h1>Happy 19th Birthday Rahma! 🎂</h1>
+        <p style="font-size: 1.8em; color: #B76E79;">From Rayan, with all my love ❤️</p>
+        <div style="margin: 40px 0;">
+            <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 25%; animation-delay: 1s;"></div>
+            <div class="heart" style="left: 40%; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 55%; animation-delay: 1.5s;"></div>
+            <div class="heart" style="left: 70%; animation-delay: 0.5s;"></div>
+            <div class="heart" style="left: 85%; animation-delay: 2.5s;"></div>
+        </div>
+        <button class="button" onclick="goToSection(2)">Begin Your Special Day ✨</button>
+    </div>
+
+    <!-- Section 2: Countdown -->
+    <div class="section" id="s2">
+        <h2>Counting Down to Your Special Day 💕</h2>
+        <p>Every second with you is precious</p>
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+        <button class="button" onclick="goToSection(3)">Continue →</button>
+    </div>
+
+    <!-- Section 3: Quiz -->
+    <div class="section" id="s3">
+        <h2>How Well Do We Know Each Other? 💑</h2>
+        <div class="quiz-container">
+            <div id="quizContent"></div>
+            <button class="button" id="quizBtn" onclick="checkAnswer()" style="display: none;">Check Answer</button>
+            <div id="quizResult"></div>
+        </div>
+        <button class="button" onclick="goToSection(4)" id="quizNext" style="display: none;">Continue →</button>
+    </div>
+
+    <!-- Section 4: Gifts -->
+    <div class="section" id="s4">
+        <h2>Your Birthday Surprises 🎁</h2>
+        <div class="gift-box">
+            <div class="gift" onclick="openGiftModal('cakeModal')">
+                <div class="gift-icon">🎂</div>
+                <div class="gift-name">Chocolate Cake</div>
+                <div class="gift-desc">Your favorite! 💕</div>
+            </div>
+            <div class="gift" onclick="goToSection(5)">
+                <div class="gift-icon">💌</div>
+                <div class="gift-name">Love Letters</div>
+                <div class="gift-desc">From my heart to yours</div>
+            </div>
+            <div class="gift" onclick="openGiftModal('flowersModal')">
+                <div class="gift-icon">💐</div>
+                <div class="gift-name">Flower Bouquet</div>
+                <div class="gift-desc">As beautiful as you</div>
+            </div>
+        </div>
+        <button class="button" onclick="goToSection(5)">Continue →</button>
+    </div>
+
+    <!-- Section 5: Letters -->
+    <div class="section" id="s5">
+        <h2>Love Letters From My Heart 💕</h2>
+        <div class="love-letters">
+            <div class="letter" id="let1" style="display: block;">
+                <h3 class="letter-title">My Dearest Rahma</h3>
+                <div class="letter-content">My dearest Rahma, as I sit here writing these words, I find myself overwhelmed by emotions so powerful that they threaten to spill over. You have become the very essence of my existence, the heartbeat that keeps me alive, the breath that fills my lungs with purpose, the light that illuminates even my darkest days. Before you entered my life, I was merely existing—moving through days without truly understanding what it meant to feel complete, to feel whole, to feel like I had found my place in this vast universe. But then you came along, like a beautiful dream that I never wanted to wake from, and everything changed in the most beautiful, magnificent, extraordinary way imaginable.
+
+From that first moment I met you at the pitch, I knew there was something absolutely extraordinary about you. Your smile had this magnetic, irresistible quality that drew me in like a moth to a flame, and your eyes held depths that I wanted to explore forever, secrets I wanted to uncover, dreams I wanted to share. As I got to know you, I discovered that your beauty extended far beyond what anyone could see on the surface—it goes soul-deep. Your kindness touches everyone around you like gentle waves reaching the shore, leaving everyone better than they were before. Your strength inspires me to be better, to reach higher, to push myself beyond my limits, to become the person you deserve to have by your side. Your compassion reminds me that there is still goodness in this world, that there is still hope, that there is still love, and that goodness, that hope, that love—it all lives in your heart.
+
+I want you to know that my love for you isn't just a feeling that comes and goes with the wind—it's a commitment, a choice I make consciously and deliberately every single day when I wake up and every night before I sleep. It's a promise I've made to myself and to the universe. When I wake up each morning, my first thought is of you, of your smile, of your voice, of the way you make me feel alive. When I face challenges throughout my day, I find strength knowing you believe in me, knowing that you see potential in me that I sometimes don't see in myself. When I achieve something, when I accomplish a goal, when I have a victory no matter how small, my first instinct is to share it with you because nothing feels complete without you by my side, nothing feels meaningful if I can't share it with you. You have woven yourself into every fiber of my being, into every thought I think, into every dream I dream, into every hope I hold, and I wouldn't want it any other way. I wouldn't change a single thing.
+
+You complete me, Rahma, in ways I never thought possible, in ways I didn't even know I was incomplete. Where I have weaknesses, you bring strength that lifts me up. Where I have doubts that plague my mind, you bring certainty that calms my soul. Where I have fears that hold me back, you bring courage that pushes me forward. Together, we are more than just two people walking through life—we are a partnership built on trust and respect, a team that faces everything united, a love story that I believe with every fiber of my being was written in the stars long before we ever met, long before we were even born. The universe brought us together for a reason, and that reason becomes clearer to me every single day. My heart belongs to you, completely and eternally, without reservation or doubt, and I promise to cherish it, to protect it, to honor your love for all the days of my life, for all the breaths I take, for all the moments we share. You are my everything, my whole world, my reason for being, and I love you beyond measure, beyond words, beyond anything I could ever express.</div>
+                <button class="button" onclick="showLetter(2)" style="margin-top: 30px;">Next Letter →</button>
+            </div>
+
+            <div class="letter" id="let2">
+                <h3 class="letter-title">To The Love of My Life</h3>
+                <div class="letter-content">To the love of my life, my beautiful, incredible, amazing Rahma, I need you to understand something that I struggle to put into words, yet I must try with everything I have because you deserve to know the truth of what you mean to me, the depth of my feelings, the enormity of my love. You have transformed my world in ways that go beyond description, beyond explanation, beyond anything I ever imagined was possible. Every single day with you feels like a gift I never knew I was missing, a blessing I never knew I needed, a dream I never dared to dream, and now that I have you in my life, now that you're here with me, I cannot imagine my existence without you in it. The thought alone terrifies me because you have become that essential, that vital, that absolutely necessary to my happiness.
+
+You make everything better, Rahma, absolutely everything. The ordinary becomes extraordinary when I experience it with you by my side. A simple conversation becomes the highlight of my day, something I replay in my mind over and over. A quiet moment together becomes a treasured memory that I hold close to my heart forever. Even challenges feel manageable, even difficulties feel bearable, because I know we face them together, hand in hand, side by side, united against whatever the world throws at us. You have this incredible, almost magical ability to make me feel safe in a chaotic world, valued when I doubt myself, and understood in a way no one ever has before, in a way I didn't think was possible. When I'm with you, I can be completely myself—no masks to hide behind, no pretenses to maintain, no walls to keep up, just the real me with all my flaws and imperfections. And the miracle, the absolute miracle that I still can't quite believe, is that you love me anyway. You love me not despite my flaws, but in a way that seems to embrace every part of who I am, the good and the bad, the strong and the weak.
+
+When I think about our future together, my heart fills with excitement and hope and anticipation that I can barely contain. I dream of all the adventures we'll have together, all the places we'll see, all the experiences we'll share. I dream of the memories we'll create, the laughter we'll share, the tears we'll cry together. I dream of the life we'll build from the ground up, brick by brick, moment by moment, day by day. I see us growing old together, our hair turning gray but our love staying young, still holding hands like we do now, still making each other laugh with silly jokes and shared memories, still looking at each other with the same love we feel today, maybe even more. I see us supporting each other's dreams no matter how big or small, celebrating every victory together no matter how minor, and standing strong through whatever challenges life brings our way. I see us creating a home filled with love and laughter and warmth and joy—a place where we both feel completely at peace, completely safe, completely loved, because we have each other, and that's all we need.
+
+Your favorite color is gray, and just like that elegant, sophisticated shade, you bring balance to my chaos, sophistication to my simplicity, and timeless beauty to my everyday life. You are my safe harbor in the worst storms, my sunshine on the cloudiest days, my greatest joy when I'm happy and my deepest comfort when I'm sad. I am so incredibly, profoundly, deeply grateful for your existence, for the day you were born into this world, for every single moment and choice and chance that led you to me. You are my soulmate—I truly believe that, my best friend who knows me better than anyone, my partner in everything I do, in every dream I chase, in every goal I pursue. You complete me in ways I never knew I was incomplete, you fill spaces in my soul I didn't know were empty.
+
+I want to spend every day for the rest of my life showing you how much I love you, proving to you through my actions how deeply I cherish you, demonstrating how completely my heart belongs to you and you alone. Forever yours, in this life and beyond, through every trial and triumph, through every sunset and sunrise. I love you, Rahma, with every fiber of my being, with every beat of my heart, with every breath I take.</div>
+                <button class="button" onclick="showLetter(3)" style="margin-top: 30px;">Next Letter →</button>
+            </div>
+
+            <div class="letter" id="let3">
+                <h3 class="letter-title">Forever My Love</h3>
+                <div class="letter-content">Forever my love, my precious, irreplaceable Rahma, I want to make you promises—sacred vows from the very depths of my heart and soul that I will keep for all eternity, through all time, until the end of days. These aren't just pretty words spoken in a moment of emotion or fleeting sentiments that fade with time; these are commitments carved into my soul like inscriptions in stone, promises that define who I am at my core and who I want to be for you, for us, for our future together.
+
+I promise to love you unconditionally, without reservation, without hesitation, without doubt. I will love you on your brightest days when everything is going right and the world seems perfect, and I will love you even more fiercely on your darkest days when you need someone to hold you up, to be your strength, to remind you of your worth. I will love you when you're confident and walking tall, and when you're uncertain and need reassurance. I will love you when you're joyful and laughing, and when you're sad and need a shoulder to cry on. I will love you when you're strong and independent, and when you need someone to lean on. My love for you is not conditional on circumstances or dependent on perfect moments—it is absolute, unwavering, unshakeable, and eternal. Nothing you could ever do could make me love you less, and every day I find new reasons to love you more.
+
+I promise to support your dreams as if they were my own, because in many ways, they are. Your happiness is my happiness, your success is my success, your dreams are my dreams. Whatever you want to achieve in this life, wherever your passions lead you, whatever goals you set for yourself no matter how big or small—I will be your biggest cheerleader, your most devoted supporter, your partner in making those dreams come true. I will encourage you when you doubt yourself, push you when you need motivation, celebrate with you when you succeed, and help you up when you stumble. Your happiness matters more to me than my own happiness, and I will do everything in my power, everything within my ability, to help you reach for the stars and grab them. When you succeed, I will celebrate with you like it's my own victory. When you face obstacles, when you hit roadblocks, when the path gets difficult, I will be right there beside you helping you overcome them, working with you to find a way forward. Your dreams are safe with me, Rahma, protected and cherished and supported always.
+
+I promise to be honest with you always, to communicate openly even when it's difficult or uncomfortable, to work through challenges together rather than running from them or hiding from difficult conversations. I promise to never take you for granted, to never let a day pass without showing appreciation for the gift of your presence in my life, for the blessing of your love. I promise to be patient when things are hard and we're both struggling, to be understanding when we disagree because we won't always see eye to eye, to always choose kindness in how I treat you even when emotions run high. Your feelings matter deeply to me, your thoughts are important to me, your needs are a priority to me—and I promise to honor all of them, to respect them, to consider them in every decision I make.
+
+I promise to grow with you, to evolve alongside you as we both become better versions of ourselves, as life changes us and shapes us. I promise to create a partnership built on unshakeable trust, deep respect, mutual support, and unconditional love that never fails. I promise to be your safe place when the world feels overwhelming, your constant in a changing world that sometimes feels unstable, your home no matter where we are physically because home isn't a place—it's being with you. I promise to choose you, every single day, over and over again, for the rest of my life.
+
+Most importantly, I promise to love you forever—through every season of life that comes our way, through every joy that lifts us up and every sorrow that brings us down, through every triumph we celebrate and every challenge we face. Until the end of time itself, until the stars stop shining and the world stops turning, you will have my heart, my devotion, my absolute commitment. You are my forever love, Rahma, and these promises are my sacred vow to you, my solemn oath. Always and forever, through all time and space, I am yours and yours alone.</div>
+                <button class="button" onclick="showLetter(4)" style="margin-top: 30px;">Next Letter →</button>
+            </div>
+
+            <div class="letter" id="let4">
+                <h3 class="letter-title">My Heart's Confession</h3>
+                <div class="letter-content">My heart's deepest confession, my darling Rahma—I need to tell you truths that I've held so close to my heart, vulnerabilities that I've never shared with anyone else in my entire life, fears and hopes and dreams that I've kept hidden away. With you, and only with you, I feel safe enough to open my soul completely and show you the real me, the person beneath all the walls and defenses I've built over the years, the person I hide from the world. That safety, that trust, that complete and utter comfort—it's one of the greatest gifts you've ever given me, and I don't take it lightly.
+
+I've never needed anyone the way I need you, Rahma, and that's something I never thought I'd say, never thought I'd feel. It's not a needy or desperate kind of need—it's not about dependence or weakness. It's the profound realization, the deep understanding that my life is infinitely better with you in it, that you make everything brighter and more meaningful. You have become essential to my happiness, central to my peace of mind, fundamental to my sense of wholeness and completion. When we're apart, even for a short time, I feel like a part of me is missing, like I'm not quite whole without you. When we're together, everything feels right with the world, everything falls into place, everything makes sense. You have become my home, not in a physical sense of a place with walls and a roof, but in the deepest emotional sense possible—you are the place where my heart feels most at rest, most at peace, most complete.
+
+You see the real me, Rahma—the person I am behind the masks I sometimes wear for the world, behind the tough exterior I show to others. You see my strengths and celebrate them, but more importantly, you see my weaknesses and don't judge them. You see my confidence when I have it, and my insecurities when they creep in. You see my successes and you're proud of me, but you also see my failures and you don't love me any less. And somehow, miraculously, beautifully, wonderfully, you love all of it. You love me not despite my flaws, but in a way that seems to accept every part of who I am—the good, the bad, the ugly, the beautiful, the strong, the weak. That kind of acceptance, that depth of understanding, that level of love—it's transformative. It's changed me in ways I can't fully explain. You make me want to be better, to grow, to improve, to reach my potential, while simultaneously accepting me exactly as I am right now in this moment. That paradox, that beautiful contradiction, is one of the many reasons I love you so deeply, so completely, so eternally.
+
+I trust you with my heart in a way I've never trusted anyone before in my entire life. I trust you with my dreams for the future, my fears about what might go wrong, my hopes for what could go right, my secrets that I've never told another soul. I trust you to be gentle with the vulnerable parts of me, the soft parts that can be hurt, the fragile parts that need protection. I trust you to protect what I've shared in confidence, to hold my heart carefully like the precious thing it is. That trust didn't come easily—I've been hurt before by people I thought I could trust, and I've learned to guard myself, to protect myself, to build walls. But with you, the walls just naturally came down without me even realizing it was happening. I didn't have to force it, didn't have to work at it. You created a space so safe, so loving, so accepting, so warm, so comfortable that I couldn't help but open up completely, couldn't help but let you in to see all of me.
+
+You understand me in ways that still amaze me, that still surprise me even after all this time together. Sometimes you know what I'm thinking before I say it, before I even fully form the thought myself. You sense what I'm feeling even when I try to hide it, even when I put on a brave face. You get me on a level that goes beyond words, beyond explanation, on a soul-deep level that I can't quite explain but I feel every single day. That connection we share—it's rare, it's precious, it's sacred, it's the kind of thing people search their whole lives for and many never find. I know how incredibly lucky I am to have found someone who truly understands my soul, someone who sees me for who I really am and loves what they see.
+
+I've never been so vulnerable with anyone, Rahma, and I've never felt so free at the same time. You've shown me that true love means being completely yourself with someone, showing them everything—your best and your worst—and knowing they'll love you even more for it, not less. Thank you for seeing me, really truly seeing me. Thank you for knowing me, for taking the time to understand me. Thank you for loving the real me, all of me, every part of me. My heart is yours, completely and forever, now and always.</div>
+                <button class="button" onclick="goToSection(6)" style="margin-top: 30px;">Continue to Next Section →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6: Messages -->
+    <div class="section" id="s6">
+        <h2>Messages From My Heart 💝</h2>
+        <div class="message-cards">
+            <div class="message-card">
+                <h3 class="card-title">To My Everything</h3>
+                <div class="card-content">Rahma, you are not just a part of my life—you have become my entire world. You filled every empty space in my heart and showed me what it truly means to love and be loved. Every single day with you is a gift I never take for granted. You complete me in ways I never thought possible.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">The Love That Changed Me</h3>
+                <div class="card-content">Loving you has transformed me. You've made me a better person through your kindness, strength, and compassion. You showed me what real love means—patient, selfless, and about choosing each other every single day. Thank you for changing my life.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">Every Moment With You</h3>
+                <div class="card-content">There's something magical about the moments we share. Whether we're talking about dreams or sharing comfortable silence, every second feels precious. I want to spend the rest of my life collecting these moments with you.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">You Are My Forever</h3>
+                <div class="card-content">When I think about forever, I think about you. You are the person I want by my side through every chapter of life. My love for you is eternal—it grows deeper and stronger with each passing day. You are my forever, Rahma.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">Thank You For Being You</h3>
+                <div class="card-content">Thank you for being the incredible, beautiful, authentic person you are. Thank you for your kindness, strength, compassion, laughter, wisdom, and love. You don't need to change—you are already perfect in my eyes.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">On Your 19th Birthday</h3>
+                <div class="card-content">Happy 19th birthday! Nineteen years ago, the world became brighter because you entered it. As you turn 19, know that my love for you knows no bounds. I'm so proud of everything you are and everything you will become. I love you more than words can say.</div>
+            </div>
+            <div class="message-card">
+                <h3 class="card-title">My Promise To You</h3>
+                <div class="card-content">I promise to love you unconditionally, support your dreams, be honest always, and choose you every single day for the rest of my life. You are my forever, Rahma, and these promises are my gift to you—a commitment to love, honor, and cherish you always.</div>
+            </div>
+        </div>
+        <button class="button" onclick="goToSection(7)">Continue →</button>
+    </div>
+
+    <!-- Section 7: Wishes -->
+    <div class="section" id="s7">
+        <h2>My Wishes For You ✨</h2>
+        <div class="wishes">
+            <div class="wish-item">May all your dreams come true this year ✨</div>
+            <div class="wish-item">May you always be surrounded by love and happiness 💕</div>
+            <div class="wish-item">May our love grow stronger with every passing day 💑</div>
+            <div class="wish-item">May this year bring you endless joy and success 🌟</div>
+            <div class="wish-item">May you achieve everything your heart desires 🎯</div>
+            <div class="wish-item">May you always know how deeply you are loved ❤️</div>
+            <div class="wish-item">May every day be as special as you are 🎂</div>
+        </div>
+        <button class="button" onclick="goToSection(8)">Continue →</button>
+    </div>
+
+    <!-- Section 8: Celebration with Candles -->
+    <div class="section" id="s8">
+        <h2>Let's Celebrate! 🎉</h2>
+        <div class="cake-container">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="cake-svg">
+                <rect fill="#654321" x="50" y="200" width="300" height="150" rx="10"/>
+                <rect fill="#4A3319" x="50" y="160" width="300" height="40"/>
+                <rect fill="#654321" x="80" y="110" width="240" height="50" rx="10"/>
+                <circle fill="#FF0000" cx="140" cy="95" r="8"/>
+                <circle fill="#FF0000" cx="200" cy="95" r="8"/>
+                <circle fill="#FF0000" cx="260" cy="95" r="8"/>
+                <rect fill="#FFD700" x="135" y="50" width="10" height="60"/>
+                <rect fill="#FFD700" x="195" y="50" width="10" height="60"/>
+                <rect fill="#FFD700" x="255" y="50" width="10" height="60"/>
+                <ellipse id="flame1" fill="#FFA500" cx="140" cy="45" rx="6" ry="10"/>
+                <ellipse id="flame2" fill="#FFA500" cx="200" cy="45" rx="6" ry="10"/>
+                <ellipse id="flame3" fill="#FFA500" cx="260" cy="45" rx="6" ry="10"/>
+            </svg>
+            <p style="font-size: 1.5em; margin: 20px 0;" id="candleText">Click the button to blow out the candles! 🕯️</p>
+            <button class="button" onclick="blowCandles()" id="blowBtn">Blow the Candles 🎂</button>
+        </div>
+        <p style="font-size: 1.5em; margin-top: 40px;">Pop the balloons! 🎈</p>
+        <div class="balloons">
+            <div class="balloon pink" onclick="this.style.display='none'"></div>
+            <div class="balloon purple" onclick="this.style.display='none'"></div>
+            <div class="balloon gold" onclick="this.style.display='none'"></div>
+            <div class="balloon pink" onclick="this.style.display='none'"></div>
+            <div class="balloon purple" onclick="this.style.display='none'"></div>
+        </div>
+        <button class="button" onclick="goToSection(9)" style="margin-top: 40px;">Continue →</button>
+    </div>
+
+    <!-- Section 9: Final Message -->
+    <div class="section" id="s9">
+        <h2>Forever Yours 💕</h2>
+        <div style="max-width: 900px; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <p style="text-align: left; font-size: 1.2em; line-height: 2;">My dearest Rahma, as you experience this birthday celebration I've created for you, I want you to understand something profound: every word, every image, every moment of this has been crafted with one purpose—to show you how deeply, completely, and eternally I love you. You are not just my girlfriend; you are my heart, my soul, my reason for being.
+
+On this, your 19th birthday, I want to celebrate not just the day you were born, but the person you have become. You are extraordinary, Rahma—beautiful, intelligent, kind, strong, compassionate, and so much more than words can capture. Your favorite color gray represents who you are: sophisticated, balanced, elegant, and timeless.
+
+From that first meeting at the pitch to this very moment, every second with you has been a treasure. When you said your dream destination is my heart, you showed me that we share the same dream—to be together, forever. You understand that true romance isn't just a movie genre; it's what we live every single day.
+
+As you turn 19 and begin this new chapter of your life, I want you to know that I will be with you every step of the way. Whatever dreams you want to chase, whatever goals you want to achieve, whatever challenges you face—I will be right there beside you, holding your hand, supporting you, believing in you, and loving you with every beat of my heart.
+
+Thank you for being you. Thank you for loving me. Thank you for allowing me to be part of your life. You are everything to me, Rahma, and I promise to spend the rest of my life proving that to you through my actions.
+
+Happy 19th birthday, my love. Here's to you, to us, and to the beautiful forever we're building together.
+
+With all my love, all my heart, and all my soul—forever yours,
+Rayan 💕</p>
+        </div>
+        <button class="button" onclick="goToSection(10)">Continue →</button>
+    </div>
+
+    <!-- Section 10: Photos -->
+    <div class="section" id="s10">
+        <h2>Our beautiful photos 📸</h2>
+        <p style="font-size: 1.5em; color: #B76E79; margin-bottom: 20px;">Rayan & Rahma - Forever in My Heart 💕</p>
+        <div class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="photo1.jpg" alt="Us Together" class="gallery-img">
+                    <p class="gallery-caption">Forever Together 💕</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo2.jpg" alt="Beautiful Memory" class="gallery-img">
+                    <p class="gallery-caption">Treasured Memories 💖</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-size: 1.3em; color: #8B5A8E;">Every moment with you is a treasure I hold close to my heart</p>
+        </div>
+        <button class="button" onclick="location.reload()">Relive the Experience ↺</button>
+    </div>
+
+    <script>
+        // NAVIGATION
+        function goToSection(num) {
+            var sections = document.getElementsByClassName('section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            var target = document.getElementById('s' + num);
+            if (target) {
+                target.style.display = 'flex';
+            }
+            document.getElementById('progressBar').style.width = ((num / 10) * 100) + '%';
+            window.scrollTo(0, 0);
+
+            if (num === 2) startTimer();
+            if (num === 3) loadQuiz();
+        }
+
+        // GIFT MODALS
+        function openGiftModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeGiftModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // CANDLE BLOWING
+        function blowCandles() {
+            var candles = [
+                { flame: 'flame1', delay: 0 },
+                { flame: 'flame2', delay: 300 },
+                { flame: 'flame3', delay: 600 }
+            ];
+
+            for (var i = 0; i < candles.length; i++) {
+                (function(candle) {
+                    setTimeout(function() {
+                        var element = document.getElementById(candle.flame);
+                        if (element) {
+                            element.style.opacity = '0';
+                            element.style.transition = 'opacity 0.5s ease';
+                        }
+                    }, candle.delay);
+                })(candles[i]);
+            }
+
+            setTimeout(function() {
+                document.getElementById('candleText').innerHTML = '🎉 Happy Birthday Rahma! Make a wish! 💕';
+                document.getElementById('blowBtn').style.display = 'none';
+            }, 1500);
+        }
+
+        // Countdown
+        var timerInterval;
+        function startTimer() {
+            if (timerInterval) return;
+            timerInterval = setInterval(function() {
+                var target = new Date('2025-11-11T00:00:00').getTime();
+                var now = new Date().getTime();
+                var diff = target - now;
+                if (diff < 0) return;
+
+                document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').textContent = Math.floor((diff % (1000 * 60)) / 1000);
+            }, 1000);
+        }
+
+        // Quiz
+        var qs = [
+            {q: "What's Rahma's favorite color?", o: ["Gray", "Blue", "Purple", "Red"], a: 0},
+            {q: "Where was our first meet?", o: ["The pitch", "Restaurant", "Park", "Cinema"], a: 0},
+            {q: "What's Rahma's dream destination?", o: ["My heart", "Tokyo", "Maldives", "New York"], a: 0},
+            {q: "What makes Rahma smile the most?", o: ["Your jokes", "Surprises", "Quality time", "All of the above"], a: 3},
+            {q: "Rahma's favorite dessert?", o: ["Chocolate cake", "Ice cream", "Cookies", "All of the above"], a: 3},
+            {q: "What's Rahma's favorite movie genre?", o: ["Romance", "Comedy", "Action", "Drama"], a: 0},
+            {q: "What does Rahma love most about us?", o: ["Honesty", "Understanding", "Actions", "All of the above"], a: 3},
+            {q: "Rahma's perfect day includes?", o: ["Adventure", "Relaxation", "Time with you", "All of the above"], a: 3},
+            {q: "What is Rahma's favourite fruit?", o: ["Orange", "Apple", "Banana", "Mango"], a: 3},
+            {q: "What makes our relationship unique?", o: ["Trust", "Love", "Connection", "All of the above"], a: 3}
+        ];
+
+        var qn = 0, score = 0, sel = null;
+
+        function loadQuiz() {
+            if (qn < qs.length) {
+                var q = qs[qn];
+                var html = '<div class="question">Question ' + (qn + 1) + ' of ' + qs.length + '</div>';
+                html += '<div class="question">' + q.q + '</div>';
+                for (var i = 0; i < q.o.length; i++) {
+                    html += '<div class="option" onclick="selOpt(' + i + ')">' + q.o[i] + '</div>';
+                }
+                document.getElementById('quizContent').innerHTML = html;
+                document.getElementById('quizBtn').style.display = 'inline-block';
+                document.getElementById('quizResult').innerHTML = '';
+            } else {
+                showQRes();
+            }
+        }
+
+        function selOpt(i) {
+            sel = i;
+            var opts = document.querySelectorAll('.option');
+            for (var j = 0; j < opts.length; j++) {
+                opts[j].classList.remove('selected');
+            }
+            opts[i].classList.add('selected');
+        }
+
+        function checkAnswer() {
+            if (sel === null) {
+                alert('Please select an answer!');
+                return;
+            }
+
+            if (sel === qs[qn].a) {
+                score++;
+                document.getElementById('quizResult').innerHTML = '<div style="color: #4CAF50; font-size: 1.5em; margin-top: 20px;">✓ Correct!</div>';
+            } else {
+                document.getElementById('quizResult').innerHTML = '<div style="color: #FF6B6B; font-size: 1.5em; margin-top: 20px;">Not quite, but okay! 💕</div>';
+            }
+
+            qn++;
+            sel = null;
+            setTimeout(loadQuiz, 1500);
+        }
+
+        function showQRes() {
+            var pct = (score / qs.length) * 100;
+            var msg = pct >= 90 ? "You know me perfectly! ✨" : pct >= 70 ? "You know me so well! ❤️" : "We'll keep learning together 💕";
+
+            document.getElementById('quizContent').innerHTML = '<div style="padding: 30px;"><h3 style="font-size: 2em; color: #B76E79; margin-bottom: 20px;">Score: ' + score + '/' + qs.length + '</h3><p style="font-size: 1.3em; color: #8B5A8E;">' + msg + '</p></div>';
+            document.getElementById('quizBtn').style.display = 'none';
+            document.getElementById('quizNext').style.display = 'inline-block';
+        }
+
+        // Letters
+        function showLetter(num) {
+            var letters = document.querySelectorAll('.letter');
+            for (var i = 0; i < letters.length; i++) {
+                letters[i].style.display = 'none';
+            }
+            document.getElementById('let' + num).style.display = 'block';
+        }
+
+        // Init
+        window.onload = function() {
+            startTimer();
+        };
+    </script>
+
+</body>
+</html>
